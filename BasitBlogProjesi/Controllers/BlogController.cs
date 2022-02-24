@@ -39,7 +39,8 @@ namespace BasitBlogProjesi.Controllers
         // GET: Blog/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.Kategoriler, "Id", "KategoriAdi");
+            ViewBag.Category = db.Kategoriler.ToList();
+            //ViewBag.CategoryId = new SelectList(db.Kategoriler, "Id", "KategoriAdi");
             return View();
         }
 
@@ -56,7 +57,7 @@ namespace BasitBlogProjesi.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            
             ViewBag.CategoryId = new SelectList(db.Kategoriler, "Id", "KategoriAdi", blog.CategoryId);
             return View(blog);
         }

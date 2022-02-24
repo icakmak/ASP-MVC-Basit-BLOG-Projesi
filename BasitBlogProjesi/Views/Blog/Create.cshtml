@@ -50,7 +50,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label">Yazı Eklenme Tarihi </label>
             <div class="col-md-10">
-                <input type="datetime" class="form-control" name="EklenmeTarihi" id="EklenmeTarihi" />
+                <input type="text" class="form-control" name="EklenmeTarihi" id="EklenmeTarihi" value="@DateTime.Now" disabled/>
 
                 @Html.ValidationMessageFor(model => model.EklenmeTarihi, "", new { @class = "text-danger" })
             </div>
@@ -79,8 +79,15 @@
         <div class="form-group">
             <label class="col-md-2 control-label">Kategori Seçimi </label>
             <div class="col-md-10">
-                @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
+                <select class="form-control valid" id="CategoryId" name="CategoryId">
+                    @foreach (var item in ViewBag.Category)
+                    {
+                        <option value="@item.Id">@item.KategoriAdi</option>
+                    }
+                </select>
+               
                 @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+
             </div>
         </div>
 
