@@ -14,6 +14,8 @@ namespace BasitBlogProjesi.Models
         public string KategoriAdi { get; set; }
         public DateTime EklenmeTarihi { get; set; }
 
+        public int CategoryId { get; set; }
+
         public bool Onay { get; set; }
         public bool Anasayfa { get; set; }
     }
