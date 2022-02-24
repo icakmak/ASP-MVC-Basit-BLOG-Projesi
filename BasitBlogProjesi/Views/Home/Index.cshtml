@@ -1,0 +1,25 @@
+﻿@using BasitBlogProjesi.Models
+@model IEnumerable<BlogModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@foreach (var item in Model)
+{
+   
+        <div class="row">
+            <div class="col-md-3">
+                <img src="https://picsum.photos/250/200?random=1">
+            </div>
+            <div class="col-md-9">
+                <h4>@item.Baslik</h4>
+                <p>@item.Aciklama</p>
+                <hr />
+                <p class="text-right"><a href="/blog/details/@item.Id" class="btn btn-info btn-success">Devamını Oku</a></p>
+            </div>
+        </div>
+        <hr />
+
+    
+}

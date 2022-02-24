@@ -1,0 +1,89 @@
+﻿@model IEnumerable<BasitBlogProjesi.Models.Blog>
+
+@{
+    ViewBag.Title = "Index";
+}
+    <div class="row">
+        <div class="col-md-9">
+            <h4>Blog Yazıları</h4>
+        </div>
+        <div class="col-md-3 text-right">
+            <a href="/blog/create" class="btn btn-primary btn-sm">Yeni Blog</a> 
+        </div>
+    </div>
+
+<table class="table table-striped table-sm table-hover">
+    <tr>
+
+        <th class="col-md-2">
+            @Html.DisplayNameFor(model => model.Baslik)
+        </th>
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.Kategoriler.KategoriAdi)
+        </th>
+        <th class="col-md-4">
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </th>
+
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.EklenmeTarihi)
+        </th>
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.Onay)
+        </th>
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.Anasayfa)
+        </th>
+        <th class="col-md-2"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Baslik)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kategoriler.KategoriAdi)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Aciklama)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.EklenmeTarihi)
+            </td>
+            <td>
+                @if (item.Onay)
+                {
+                    <label class="label label-success">Onayda</label>
+                }
+                else
+                {
+                    <label class="label label-danger">Onaysız</label>
+                }
+            </td>
+            <td>
+                @if (item.Anasayfa)
+                {
+                    <label class="label label-success">Show</label>
+                }
+                else
+                {
+                    <label class="label label-danger">NoShow</label>
+                }
+
+            </td>
+            <td>
+
+                <div class="btn-group" role="group" aria-label="...">
+                    <a href="/blog/Edit/@item.Id" class="btn btn-warning btn-sm">Update</a>
+                    <a href="/blog/Details/@item.Id" class="btn btn-info btn-sm">Detail</a>
+                    <a href="/blog/Delete/@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>

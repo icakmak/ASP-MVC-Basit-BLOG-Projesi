@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BasitBlogProjesi.Models.CategoryModel>
+
+    @{
+    ViewBag.Title = "Index";
+    }
+
+    <div class="row">
+        <div class="col-md-9">
+            <h4 style="font:bold;">Kategoriler</h4>
+        </div>
+        <div class="col-md-3 text-right">
+            <a href="/category/create" class="btn btn-primary btn-sm">Yeni Kategori</a>
+        </div>
+    </div>
+
+    <table class="table table-sm table-striped table-hover">
+        <tr>
+            <th class="col-sm-9">
+                Kategoriler
+            </th>
+            <th class="col-sm-1">
+                Yazı Sayısı
+            </th>
+            <th class="col-sm-2"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                <a href="/category/details/@item.Id">@item.KategoriAdi</a>
+                
+            </td>
+            <td class="text-center">
+                @item.BlogSayisi
+            </td>
+            <td>
+                <div class="btn-group" role="group" aria-label="...">
+                    <a href="/Category/Edit/@item.Id" class="btn btn-warning btn-sm">Update</a>
+                    <a href="/Category/Details/@item.Id" class="btn btn-info btn-sm">Detail</a>
+                    <a href="/Category/Delete/@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </td>
+        </tr>
+        }
+
+    </table>
