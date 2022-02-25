@@ -130,6 +130,7 @@
     <Compile Include="Models\BlogModel.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\Comments.cs" />
     <Compile Include="Models\VTContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -154,6 +155,9 @@
     <Content Include="Views\Category\Edit.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Home\KategoriBlog.cshtml" />
+    <Content Include="Views\Home\BlogDetail.cshtml" />
+    <Content Include="Views\Shared\KategoriMenu.cshtml" />
+    <Content Include="Views\Home\BlogSearch.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

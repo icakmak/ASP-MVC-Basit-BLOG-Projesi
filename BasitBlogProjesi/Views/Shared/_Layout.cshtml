@@ -27,11 +27,23 @@
     <hr />
     <div class="container body-content">
         <div class="row">
-            <div class="col-md-12">
-                @RenderBody()
-            </div>
+            @if (IsSectionDefined("SagKolon"))
+            {
+                <div class="col-sm-9">
+                    @RenderBody()
+                </div>
+                <div class="col-sm-3">
+                    @RenderSection("SagKolon")
+                </div>
+            }
+            else
+            {
+                <div class="col-md-12">
+                    @RenderBody()
+                </div>
+            }
         </div>
-        
+
 
         <hr />
         <footer>

@@ -75,10 +75,11 @@ namespace BasitBlogProjesi.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Baslik,Aciklama,Icerik,Resim,EklenmeTarihi,Onay,Anasayfa,CategoryId")] Blog blog)
+        public ActionResult Create([Bind(Include = "Baslik,Aciklama,Icerik,Resim,Onay,Anasayfa,CategoryId")] Blog blog)
         {
             if (ModelState.IsValid)
             {
+                blog.EklenmeTarihi = DateTime.Now;
                 db.Bloglar.Add(blog);
                 db.SaveChanges();
                 return RedirectToAction("Index");

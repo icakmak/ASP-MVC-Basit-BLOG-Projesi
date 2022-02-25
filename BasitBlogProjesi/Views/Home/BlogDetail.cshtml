@@ -1,0 +1,87 @@
+﻿@model BasitBlogProjesi.Models.Blog
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<img src="http://dagsan.com.tr/images/yootheme/blog_zoo.jpg" class="img-responsive" />
+<hr />
+<h3>@Model.Baslik</h3>
+<hr>
+<p>@Model.Icerik</p>
+<hr>
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-3">
+        @Model.EklenmeTarihi
+    </div>
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-3">
+
+    </div>
+</div>
+<hr />
+<div class="comment">
+    <div class="well">
+        <h4>Yorum Yap</h4>
+        <form role="form" action="/Home/Comments" method="post">
+            <input type="hidden" name="BlogId" id="BlogId" value="@Model.Id" />
+            <div class="form-group">
+                <input class="form-control" name="AdSoyad" id="AdSoyad" placeholder="Adınız Soyadınız">
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="Mail" id="Mail" placeholder="Mail Adresiniz">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" name="Mesaj" id="Mesaj" rows="3" placeholder="Mesajınız!"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <hr />
+    @if (ViewBag.Msj == 0)
+    {
+
+    }
+    else if (ViewBag.Msj == 1)
+    {
+        <div class="alert alert-success">Yorumunuz Başarılı Bir Şekilde Eklendi!...</div>
+    }
+    else if (ViewBag.Msj == 2)
+    {
+        <div class="alert alert-danger">Yorumunuz Eklenemedi</div>
+    }
+
+    @foreach (var item in ViewBag.Comments)
+    {
+        <div class="media row">
+            <div class="media-left col-md-2">
+                <a href="#">
+                    <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 64px; height: 64px;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xN2YyZTQxNjg1OSB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE3ZjJlNDE2ODU5Ij48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMy4xNzMwMDQxNTAzOTA2MjUiIHk9IjM2LjUiPjY0eDY0PC90ZXh0PjwvZz48L2c+PC9zdmc+" data-holder-rendered="true">
+                </a>
+            </div>
+            <div class="media-body col-md-10">
+                <div class="row">
+                    <div class="col-lg-9"><h4 class="media-heading">@item.AdSoyad</h4></div>
+                    <div class="col-lg-3">@item.EklenmeTarihi</div>
+                </div>
+                
+                @item.Mesaj
+            </div>
+        </div>
+    }
+
+
+</div>
+<hr />
+
+
+
+@section SagKolon
+{
+    @Html.Action("kategorilers", "Home")
+}

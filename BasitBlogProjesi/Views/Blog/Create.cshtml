@@ -48,15 +48,6 @@
         </div>
 
         <div class="form-group">
-            <label class="col-md-2 control-label">Yazı Eklenme Tarihi </label>
-            <div class="col-md-10">
-                <input type="text" class="form-control" name="EklenmeTarihi" id="EklenmeTarihi" value="@DateTime.Now" disabled/>
-
-                @Html.ValidationMessageFor(model => model.EklenmeTarihi, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.Onay, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">

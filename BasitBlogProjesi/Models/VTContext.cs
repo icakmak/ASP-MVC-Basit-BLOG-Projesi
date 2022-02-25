@@ -14,5 +14,6 @@ namespace BasitBlogProjesi.Models
         }
         public DbSet<Category> Kategoriler { get; set; }
         public DbSet<Blog> Bloglar { get; set; }
+        public DbSet<Comments> Yorumlar { get; set; }
     }
 }

@@ -5,39 +5,27 @@
 }
 
 
-<div class="row">
-    <div class="col-md-9">
-        @foreach (var item in Model)
-        {
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="https://picsum.photos/250/200?random=1">
-                </div>
-                <div class="col-md-8">
-                    <h4>@item.Baslik</h4>
-                    <p>@item.Aciklama</p>
-                    <hr />
-                    <p class="text-right"><a href="/blog/details/@item.Id" class="btn btn-info btn-success">Devamını Oku</a></p>
-                </div>
-            </div>
+
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-md-4">
+            <img src="https://picsum.photos/250/200?random=1">
+        </div>
+        <div class="col-md-8">
+            <h4>@item.Baslik</h4>
+            <p>@item.Aciklama</p>
             <hr />
-        }
+            <p class="text-right"><a href="/Home/BlogDetail/@item.Id" class="btn btn-info btn-success">Devamını Oku</a></p>
+        </div>
     </div>
-    <div class="col-md-3">
-        <ul class="list-group">
-            @foreach (var item in ViewBag.Kategori)
-            {
-                <li class="list-group-item">
-                    
-                   
-                    <a href="/Home/KategoriBlog/@item.Id"> @item.KategoriAdi</a>
-                </li>
-            }
+    <hr />
+}
+@section SagKolon
+    {
+    @Html.Action("kategorilers", "Home")
 
 
-        </ul>
-    </div>
-</div>
-
+}
 
 
