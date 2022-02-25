@@ -17,7 +17,7 @@ namespace BasitBlogProjesi.Controllers
         // GET: Blog
         public ActionResult Index()
         {
-            var bloglar = db.Bloglar.Include(b => b.Kategoriler).OrderByDescending(i=>i.Id);
+            var bloglar = db.Bloglar.Include(b => b.Kategoriler).OrderByDescending(i => i.Id);
             return View(bloglar.ToList());
         }
 
@@ -28,11 +28,37 @@ namespace BasitBlogProjesi.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            //.Select(i => new CategoryModel()
+            // {
+            //     Id = i.Id,
+            //     KategoriAdi = i.KategoriAdi,
+            //     BlogSayisi = i.Bloglar.Count,
+            // })
+
             Blog blog = db.Bloglar.Find(id);
+            
+            
             if (blog == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.Kategori = db.Kategoriler
+                    .Select(i =>
+                    new CategoryModel()
+                    {
+                        Id = i.Id,
+                        KategoriAdi = i.KategoriAdi,
+                        BlogSayisi = i.Bloglar.Count
+                    })
+                    .ToList();
+            foreach (var item in ViewBag.Kategori)
+            {
+                if (item.Id == blog.CategoryId)
+                {
+                    ViewBag.Kat = item.KategoriAdi;
+                }
+            }
+            
             return View(blog);
         }
 
@@ -57,7 +83,7 @@ namespace BasitBlogProjesi.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            
+
             ViewBag.CategoryId = new SelectList(db.Kategoriler, "Id", "KategoriAdi", blog.CategoryId);
             return View(blog);
         }
@@ -103,7 +129,7 @@ namespace BasitBlogProjesi.Controllers
 
                 }
 
-                
+
             }
             ViewBag.CategoryId = new SelectList(db.Kategoriler, "Id", "KategoriAdi", blog.CategoryId);
             return View(blog);
