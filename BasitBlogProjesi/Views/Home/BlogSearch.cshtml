@@ -5,22 +5,7 @@
 }
 
 
-
-@foreach (var item in Model)
-{
-    <div class="row">
-        <div class="col-md-4">
-            <img src="https://picsum.photos/250/200?random=1">
-        </div>
-        <div class="col-md-8">
-            <h4>@item.Baslik</h4>
-            <p>@item.Aciklama</p>
-            <hr />
-            <p class="text-right"><a href="/Home/BlogDetail/@item.Id" class="btn btn-info btn-success">Devamını Oku</a></p>
-        </div>
-    </div>
-    <hr />
-}
+@Html.Partial("BlogPartial", Model)
 
 
 @section SagKolon

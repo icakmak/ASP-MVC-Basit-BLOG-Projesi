@@ -28,32 +28,9 @@ namespace BasitBlogProjesi.Controllers
                 .OrderByDescending(i => i.Id)
                 .ToList();
 
-            //ViewBag.Kategori = db.Kategoriler
-            //    .Select(i =>
-            //    new CategoryModel()
-            //    {
-            //        Id = i.Id,
-            //        KategoriAdi = i.KategoriAdi,
-            //        BlogSayisi = i.Bloglar.Count
-            //    })
-            //    .ToList();
             return View(bloglar);
         }
-        [ChildActionOnly]
-        public PartialViewResult kategorilers()
-        {
-            ViewBag.Kategori = db.Kategoriler
-                .Select(i =>
-                new CategoryModel()
-                {
-                    Id = i.Id,
-                    KategoriAdi = i.KategoriAdi,
-                    BlogSayisi = i.Bloglar.Count
-                })
-                .ToList();
-
-            return PartialView("KategoriMenu", ViewBag.Kategori);
-        }
+        
         public ActionResult KategoriBlog(int? Id)
         {
             if (Id != null)
@@ -79,7 +56,21 @@ namespace BasitBlogProjesi.Controllers
             return RedirectToAction("Index");
 
         }
+        [ChildActionOnly]
+        public PartialViewResult kategorilers()
+        {
+            ViewBag.Kategori = db.Kategoriler
+                .Select(i =>
+                new CategoryModel()
+                {
+                    Id = i.Id,
+                    KategoriAdi = i.KategoriAdi,
+                    BlogSayisi = i.Bloglar.Count
+                })
+                .ToList();
 
+            return PartialView("KategoriMenu", ViewBag.Kategori);
+        }
         public ActionResult BlogDetail(int? id,int? msj)
         {
             if (id == null)

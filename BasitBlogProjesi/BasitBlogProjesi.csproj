@@ -158,6 +158,7 @@
     <Content Include="Views\Home\BlogDetail.cshtml" />
     <Content Include="Views\Shared\KategoriMenu.cshtml" />
     <Content Include="Views\Home\BlogSearch.cshtml" />
+    <Content Include="Views\Shared\BlogPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
